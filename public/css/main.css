@@ -1,0 +1,86 @@
+/*
+*= require bootstrap/css/bootstrap.min
+*= require icheck/css/all
+*= require font-awesome.min
+*= require typeahead.min
+*= require datepicker
+*= require adminlte
+*= require_self
+*/
+
+th.sortable a {
+	background-position: right;
+	background-repeat: no-repeat;
+	padding-right: 1.1em;
+}
+th.asc a {
+	background-image: url(../img/sort_asc.gif);
+}
+th.desc a {
+	background-image: url(../img/sort_desc.gif);
+}
+
+.pagination {	
+	margin-top: 6px;
+}
+.errors ul {
+	padding: 0;
+}
+.errors li {
+	list-style: none;
+	background: transparent url(../img/exclamation.png) 0.5em 50% no-repeat;
+	text-indent: 2.2em;
+}
+
+.table-show > tbody > tr > td:first-child {
+	font-weight: bold;
+}
+.table-show > tbody > tr:first-child > td:first-child {
+    width: 200px;
+}
+.col-act-1 {
+    position: relative;
+    width: 60px;
+}
+.col-act-2 {
+    position: relative;
+    width: 80px;
+}
+.col-act-cnt {	
+	display: table;
+}
+.col-act-cnt > * {
+    float: left;
+    margin-left: 5px;
+}
+.col-act-cnt a {
+    font-size: medium;          
+}
+
+.separator {
+    padding: 10px 0;
+    display: block;
+}
+.separator.bottom {
+    padding: 0 0 10px;
+}
+.separator.top {
+    padding: 10px 0 0;
+}
+
+.error-page .error-content h2 {
+    font-size: 36px;
+}
+.error-page .error-content {
+    font-size: large;
+}
+.error-page .error-content .fa.fa-warning {
+    font-size: 32px;
+    padding-right: 10px;
+}
+
+.tt-suggestion.tt-cursor {
+    color: #fff!important;
+    background-color: #3c8dbc!important;
+}
+
