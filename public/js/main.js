@@ -10,6 +10,10 @@
 //= require_self
 
 $(function () {
+
+    $('ul.sidebar-menu li.treeview ul.treeview-menu li.active:first').parents('ul li').addClass('open active');
+    $(".sidebar .treeview").tree();
+
     $('input,select').addClass('input-sm');
 
     $('.btn').addClass('btn-sm');
@@ -38,7 +42,7 @@ $(function () {
             $(this).parent().submit();
     });
 
-    $('.combobox').combobox();
+    /*$('.combobox').combobox();
 
     var input = $('#main-container').find('input:not([type=hidden]),textarea,select').first();
     if (input.length) {
@@ -123,6 +127,6 @@ $(function () {
             $(this).data("initial", $(this).val());
             $(this).data("selected", false);
         });
-    });
+    });*/
 
 });

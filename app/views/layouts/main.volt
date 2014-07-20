@@ -6,6 +6,7 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     {{ stylesheet_link("bootstrap/css/bootstrap.min.css") }}
+    {{ stylesheet_link("css/font-awesome.min.css") }}
     {{ stylesheet_link("css/font-adminlte.css") }}
     {{ stylesheet_link("css/adminlte.css") }}
     {{ stylesheet_link("css/main.css") }}
@@ -270,33 +271,35 @@
                     </div>
                 </form>
                 <!-- /.search form -->
-                <!--
-                <ul class="sidebar-menu">
-                    <g:set var="menuServ" bean="menuService"/>
-                    <g:each in="${menuServ.userMenuXML}" var="menu">
-                        <g:set var="ativo" value="${menu.value().menuitem.find { params.controller == it.@controller } != null}"/>
 
-                        <li class="treeview ${(ativo) ? 'open active' : ''}">
-                            <a href="javascript:;">
-                                <i class="${menu.@icon}"></i>
-                                <span>${g.message(code: menu.@code)}</span>
-                                <g:if test="${ativo}">
-                                   <span class="menu-hover"></span>
-                                </g:if>
+                <ul class="sidebar-menu">
+                    {% set route = this.view.getControllerName() ~ '/' ~ this.view.getActionName() %}
+                    {% for sub in menu %}
+                        <li class="treeview">
+                            {% set href = (sub['url'] is defined) ? url(sub['url']) : '#' %}
+                            <a href="{{ href }}">
+                                <i class="{{ sub['icon'] }}"></i>
+                                <span>{{ t(sub['text']) }}</span>
+
+                                {% if href == "#" %}
+                                    <i class="fa pull-right fa-angle-left"></i>
+                                {% endif %}
                             </a>
-                            <ul class="treeview-menu">
-                                <g:each in="${menu.value().menuitem}">
-                                    <li class="${(params.controller == it.@controller) ? 'active' : ''}">
-                                        <a href="${createLink(controller: it.@controller, action: it.@action)}">
-                                            <g:message code="${it.@code}"/>
-                                        </a>
-                                    </li>
-                                </g:each>
-                            </ul>
+                            {% if sub['items'] is defined %}
+                                <ul class="treeview-menu">
+                                    {% for item in sub['items'] %}
+                                        <li class="{{ item['url'] == route ? 'active' : '' }}">
+                                            <a href="{{ url(item['url']) }}">
+                                                <i class="{{ item['icon'] }}"></i> <span>{{ t(item['text']) }}</span>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                         </li>
-                    </g:each>
+                    {% endfor %}
                 </ul>
-                -->
+
             </section>
             <!-- /.sidebar -->
         </aside>
@@ -310,6 +313,6 @@
     {{ javascript_include("js/jquery.min.js") }}
     {{ javascript_include("bootstrap/js/bootstrap.min.js") }}
     {{ javascript_include("js/adminlte.js") }}
-
+    {{ javascript_include("js/main.js") }}
 </body>
 </html>

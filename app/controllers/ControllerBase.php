@@ -9,6 +9,7 @@ abstract class ControllerBase extends Controller
     public function initialize()
     {
         $this->view->setVar("t", $this->_getTranslation() );
+        $this->view->setVar("menu", $this->_getMenu());
     }
 
     protected function _getTranslation()
@@ -22,5 +23,10 @@ abstract class ControllerBase extends Controller
         return new \Phalcon\Translate\Adapter\NativeArray(array(
             "content" => require $file
         ));
+    }
+
+    protected function _getMenu()
+    {
+        return include '/../config/menu.php';
     }
 }
